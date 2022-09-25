@@ -1,0 +1,80 @@
+{
+  "menu": [
+    {
+        "navheader": "Principal",
+        "slug": ""
+    },
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "home",
+      "slug": "home"
+    },
+    {
+        "navheader": "Omie",
+        "slug": ""
+    },
+    {
+        "url": "omie/clientes",
+        "name": "Clientes",
+        "icon": "user",
+        "slug": "layout-full"
+    },
+    {
+        "url": "omie/services",
+        "name": "Serviços",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "omie/products",
+        "name": "Produtos",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "omie/contracts",
+        "name": "Contratos",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "omie/os",
+        "name": "Ordem de Serviço",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "navheader": "Salesforce",
+        "slug": ""
+    },
+    {
+        "url": "salesforce/clientes",
+        "name": "Clientes",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "salesforce/services",
+        "name": "Serviços",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "salesforce/os",
+        "name": "Gerar OS",
+        "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "navheader": "Configuração",
+        "slug": ""
+    },
+    {
+        "url": "config/apis",
+        "name": "Clientes",
+        "icon": "circle",
+        "slug": "layout-full"
+    }
+  ]
+}
