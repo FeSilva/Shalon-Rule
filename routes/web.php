@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\EmployessController;
+use App\Http\Controllers\ConfigApiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +59,23 @@ Route::middleware([
     Route::prefix('/calendar')->group(function () {
         Route::get('/', [CalendarController::class, 'index'])->name('calendar');
     });
+
+    //Usuários
+    Route::prefix('/user')->group(function () {
+        Route::get('/list', [UserController::class, 'index'])->name('users.list');
+    });
+
+    //Configurações
+    Route::prefix('/config-apis')->group(function () {
+        Route::get('/', [ConfigApiController::class, 'index'])->name('config-apis.index');
+        Route::get('/create', [ConfigApiController::class, 'create'])->name('config-apis.create');
+        Route::get('/show/{id}', [ConfigApiController::class, 'show'])->name('config-apis.show');
+        Route::post('/store', [ConfigApiController::class, 'create'])->name('config-apis.store');
+        Route::get('/edit/{id}', [ConfigApiController::class, 'edit'])->name('config-apis.edit');
+        Route::put('/update', [ConfigApiController::class, 'update'])->name('config-apis.update');
+        Route::delete('/destroy/{id}', [ConfigApiController::class, 'destroy'])->name('config-apis.destroy');
+    });
+
 });
 /*
 

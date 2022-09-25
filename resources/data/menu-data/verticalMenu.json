@@ -67,13 +67,18 @@
         "slug": "layout-full"
     },
     {
-        "navheader": "Configuração",
-        "slug": ""
+        "navheader": "Configuração"
     },
     {
-        "url": "config/apis",
-        "name": "Clientes",
+        "url": "config-apis",
+        "name": "Config. Apis",
         "icon": "circle",
+        "slug": "layout-full"
+    },
+    {
+        "url": "user/list",
+        "name": "Usuários do Grupo",
+        "icon": "users",
         "slug": "layout-full"
     }
   ]

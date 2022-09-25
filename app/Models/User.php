@@ -60,4 +60,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Função responsável relacionamento entre o Time (TRARÁ SEMPRE O ULTIMO TIME ASSOCIADO.)
+     * @param 
+     * @return void
+     **/
+    public function team()
+    {
+       return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id');
+    }
 }
