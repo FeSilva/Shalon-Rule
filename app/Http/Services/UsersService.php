@@ -22,6 +22,18 @@ class UsersService
         return $this->jsonUserTable($this->repository->getUserTeam());
     }
 
+    public function store($userData)
+    {
+        return $this->repository->store($userData);
+    }
+
+    /**
+     * Buscar um usuário pelo ID
+     */
+    public function getUserById($id)
+    {
+        return $this->repository->find($id);
+    }
      /**
      * Função responsável pela criação do json de leitura da tabela de usuários.
      */

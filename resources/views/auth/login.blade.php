@@ -44,10 +44,10 @@
 
             <div class="mb-1">
               <div class="d-flex justify-content-between">
-                <label class="form-label" for="login-password">Password</label>
+                <label class="form-label" for="login-password">Senha</label>
                 @if (Route::has('password.request'))
                   <a href="{{ route('password.request') }}">
-                    <small>Forgot Password?</small>
+                    <small>Esqueceu a Senha?</small>
                   </a>
                 @endif
               </div>

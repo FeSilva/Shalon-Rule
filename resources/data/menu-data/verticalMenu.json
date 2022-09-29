@@ -15,13 +15,13 @@
         "slug": ""
     },
     {
-        "url": "omie/clientes",
-        "name": "Clientes",
+        "url": "omie_accounts",
+        "name": "Contas",
         "icon": "user",
         "slug": "layout-full"
     },
     {
-        "url": "omie/services",
+        "url": "omie_services",
         "name": "Serviços",
         "icon": "circle",
         "slug": "layout-full"
@@ -49,8 +49,8 @@
         "slug": ""
     },
     {
-        "url": "salesforce/clientes",
-        "name": "Clientes",
+        "url": "salesforce/accounts",
+        "name": "Contas",
         "icon": "circle",
         "slug": "layout-full"
     },

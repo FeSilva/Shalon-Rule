@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password','tax_id'
+        'name','last_name', 'email', 'password','tax_id'
     ];
 
     /**
@@ -68,6 +68,8 @@ class User extends Authenticatable
      **/
     public function team()
     {
-       return $this->belongsToMany(Team::class, 'team_user', 'user_id', 'team_id');
+       return $this->belongsToMany(Team::class)->withPivot(['role']);
     }
+
+    
 }

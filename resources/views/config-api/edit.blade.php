@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <section class=" container-fluid">
+    <section class="container-fluid">
         <div class="col-md-12">
 
             @includeif('partials.errors')

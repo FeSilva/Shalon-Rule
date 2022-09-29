@@ -43,4 +43,14 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+      /**
+     * Função responsável relacionamento entre o Time (TRARÁ SEMPRE O ULTIMO TIME ASSOCIADO.)
+     * @param 
+     * @return void
+     **/
+    public function user()
+    {
+       return $this->belongsToMany(User::class, 'team_user')->withPivot(['role']);
+    }
 }

@@ -7,7 +7,6 @@ $configData = Helper::applClasses();
       <li class="nav-item me-auto">
         <a class="navbar-brand" href="{{url('/')}}">
             <img src="{{ asset('images/logo/logo.png')}}" width="100%">
-          
         </a>
       </li>
       <li class="nav-item nav-toggle">

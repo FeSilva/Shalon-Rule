@@ -10,10 +10,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
+    private $service;
+    
     public function __construct(UsersService $service)
     {
-        //app(Dispatcher::class)->dispatch($this->service->getUsersJson());
+        $this->service = $service;
         $service->getUsersJson();
     }
 
@@ -48,7 +49,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo '<pre>';
+        var_dump($request);
+        die("porou");
+        return $this->service->store($request->except('_token'));
     }
 
     /**
@@ -59,7 +63,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = $this->service->getUserById($id);
+        return view("users.account", compact('user'));
     }
 
     /**

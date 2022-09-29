@@ -4,6 +4,7 @@ return [
     "Dashboard" => 'Painel',
     "Cadastros" => 'Cadastros',
     "Config. Apis" => "Config. Apis",
+    "Contas" => "Contas",
     "Usuários do Grupo" => "Usuários do Grupo",
     "Configuração" => "Configuração",
     "Clientes" => "Clientes",

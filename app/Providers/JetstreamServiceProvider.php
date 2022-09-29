@@ -64,11 +64,11 @@ class JetstreamServiceProvider extends ServiceProvider
             'update',
         ])->description('Financeiro tem acesso as opções financeiras do sistema.');
 
-       /* Jetstream::role('user', 'Usuario', [
+       Jetstream::role('user', 'Usuario', [
             'read',
         ])->description('Usuário tem permissão para visualizar informações.');
         
-        Jetstream::role('support', 'Support', [
+        /*Jetstream::role('support', 'Support', [
             'read',
             'create',
             'update',

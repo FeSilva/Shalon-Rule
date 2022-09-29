@@ -46,10 +46,17 @@
 
     <!-- Name -->
     <div class="mb-1">
-      <x-jet-label class="form-label" for="name" value="{{ __('Nome Completo') }}" />
+      <x-jet-label class="form-label" for="name" value="{{ __('Nome') }}" />
       <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
         wire:model.defer="state.name" autocomplete="name" />
       <x-jet-input-error for="name" />
+    </div>
+
+    <div class="mb-1">
+      <x-jet-label class="form-label" for="last_name" value="{{ __('Sobrenome') }}" />
+      <x-jet-input id="last_name" type="text" class="{{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+        wire:model.defer="state.last_name" autocomplete="last_name" />
+      <x-jet-input-error for="last_name" />
     </div>
 
     <!-- Email -->
@@ -66,13 +73,6 @@
       <x-jet-input id="tax_id" type="tax_id" class="{{ $errors->has('tax_id') ? 'is-invalid' : '' }}"
         wire:model.defer="state.tax_id" />
       <x-jet-input-error for="tax_id" />
-    </div>
-       <!-- CPF/CNPJ -->
-    <div class="mb-1">
-        <x-jet-label class="form-label" for="phone" value="{{ __('Telefone') }}" />
-        <x-jet-input id="phone" type="phone" class="{{ $errors->has('phone') ? 'is-invalid' : '' }}"
-          wire:model.defer="state.phone" />
-        <x-jet-input-error for="phone" />
     </div>
   </x-slot>
 

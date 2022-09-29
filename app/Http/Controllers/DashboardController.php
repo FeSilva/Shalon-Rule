@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Services\UsersService;
 
 class DashboardController extends Controller
 {
+    private $serviceUser;
+
+    public function __construct(UsersService $serviceUser)
+    {
+        $this->serviceUser = $serviceUser;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view("dashboard.index");
+        $user = $this->serviceUser->getUserById(Auth()->user()->id);
+    
+        return view("dashboard.index", compact('user'));
     }
 
     /**

@@ -20,23 +20,31 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'last_name' => 'required|string',
             'email'=>'required|string|unique:users',
+            'tax_id'=>'required|string|unique:users',
             'password'=>'required|string',
             'c_password' => 'required|same:password'
         ]);
 
+        $date = date("Y");
         $user = new User([
             'name'  => $request->name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'tax_id' => $request->tax_id,
+            'password' => bcrypt($request->name."@".$date),
         ]);
 
+     
+        
         if($user->save()){
+            dd($user);
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->plainTextToken;
 
             return response()->json([
-            'message' => 'Successfully created user!',
+            'message' => 'Sucesso, usuário criado!',
             'accessToken'=> $token,
             ],201);
         }
@@ -65,18 +73,19 @@ class AuthController extends Controller
         if(!Auth::attempt($credentials))
         {
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Não Autorizado'
             ],401);
         }
 
         $user = $request->user();
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->plainTextToken;
 
             return response()->json([
-            'accessToken' =>$token,
-            'token_type' => 'Bearer',
-        ]);
+                'accessToken' =>$token,
+                'token_type' => 'Bearer',
+            ]);
     }
 
     /**

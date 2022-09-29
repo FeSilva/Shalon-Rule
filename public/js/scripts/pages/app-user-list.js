@@ -99,7 +99,7 @@ $(function () {
               '</div>' +
               '<div class="d-flex flex-column">' +
               '<a href="' +
-              userView +
+              assetPath + 'user/view/account/'+ full['responsive_id'] +
               '" class="user_name text-truncate text-body"><span class="fw-bolder">' +
               $name +
               '</span></a>' +
@@ -112,7 +112,11 @@ $(function () {
           }
         },
         {
-          // User Role
+          //user email
+          targets: 4,
+        },
+        {
+          // User Team
           targets: 3,
           render: function (data, type, full, meta) {
             var $role = full['team'];
@@ -127,10 +131,6 @@ $(function () {
           }
         },
         {
-          targets: 2,
-          responsivePriority: 2,
-        },
-        {
           // Actions
           targets: -1,
           title: 'Ações',
@@ -143,7 +143,7 @@ $(function () {
               '</a>' +
               '<div class="dropdown-menu dropdown-menu-end">' +
               '<a href="' +
-              userView +
+              assetPath + 'user/view/account/'+ full['responsive_id'] +
               '" class="dropdown-item">' +
               feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) +
               'Details</a>' +
@@ -218,7 +218,7 @@ $(function () {
           }
         },
         {
-          text: 'Add New User',
+          text: 'Adicionar Usuário',
           className: 'add-new btn btn-primary',
           attr: {
             'data-bs-toggle': 'modal',
@@ -352,13 +352,19 @@ $(function () {
     newUserForm.validate({
       errorClass: 'error',
       rules: {
-        'user-fullname': {
+        'name': {
           required: true
         },
-        'user-name': {
+        'last_name': {
           required: true
         },
-        'user-email': {
+        'email': {
+          required: true
+        },
+        'tax_id': {
+          required: true
+        },
+        'role': {
           required: true
         }
       }
@@ -366,9 +372,32 @@ $(function () {
 
     newUserForm.on('submit', function (e) {
       var isValid = newUserForm.valid();
-      e.preventDefault();
+      var name = $("#name").val();
+      var last_name = $("#last_name").val();
+      var email = $("#email").val();
+      var tax_id = $("#tax_id").val();
+      var role = $("#role").val();
+
+      alert(role);
+      $.ajax({
+        headers: {
+          'X-CSRF-Token': $('input[name="_token"]').val()
+        },
+        type: "POST",
+        url: "{{ route('users.store') }}",
+        data: {name: name, last_name: last_name, email: email, tax_id: tax_id, role: role},
+        success: function (data) {
+          console.log(data);
+          alert("finalizado");
+        },
+        error: function (error) {
+
+        }
+      });
+      
       if (isValid) {
-        newUserSidebar.modal('hide');
+        
+
       }
     });
   }

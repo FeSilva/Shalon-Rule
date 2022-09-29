@@ -30,7 +30,7 @@ data-textdirection="{{ env('MIX_CONTENT_DIRECTION') === 'rtl' ? 'rtl' : 'ltr' }}
 
 </head>
 <!-- END: Head-->
-
+<input name="_token" type="hidden" value="{{ csrf_token() }}" />
 <!-- BEGIN: Body-->
 @isset($configData["mainLayoutType"])
 @extends((( $configData["mainLayoutType"] === 'horizontal') ? 'layouts.horizontalLayoutMaster' :
