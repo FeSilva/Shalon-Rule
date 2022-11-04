@@ -20,7 +20,6 @@ class UsuariosRepository
 
     public function store($userData)
     {
-        $this->model->
         $this->model->create([
             'name' => $userData['name'],
             'last_name' => $userData['last_name'],
@@ -56,7 +55,7 @@ class UsuariosRepository
 
     public function find($id)
     {
-        return $this->model->with("team")->find($id);
+        return $this->model->with("team")->with("service")->find($id);
     }
 
     private function currenteNameTeam($teams, $user)

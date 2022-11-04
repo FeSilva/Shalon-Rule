@@ -4,15 +4,20 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+
+use Auth;
 
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
+ 
 
     /**
      * Create a newly registered user.
@@ -38,9 +43,9 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
                 'tax_id' => $input['tax_id'],
-            ]), function (User $user) {
-                $user->sendEmailVerificationNotification();
-                $this->createTeam($user);
+            ]), function (User $user) use ($input) {
+                //$user->sendEmailVerificationNotification();
+                $this->createTeam($user, $input);
             });
         });
 
@@ -53,14 +58,16 @@ class CreateNewUser implements CreatesNewUsers
      * @param  \App\Models\User  $user
      * @return void
      */
-    protected function createTeam(User $user)
+    protected function createTeam(User $user, $input)
     {
-        $user->ownedTeams()->save(Team::forceCreate([
+        $team = Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => $input['group_name'],
             'phone' => null,
             'zipcode' => null,
             'personal_team' => true,
-        ]));
+        ]);
+        $user->ownedTeams()->save($team);
+       
     }
 }

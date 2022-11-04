@@ -7,7 +7,7 @@ namespace App\Http\Services;
 
 use App\Models\Usuarios\UsuariosRepository;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\ServiceUser;
 class UsersService
 {
     private $repository;
@@ -25,6 +25,20 @@ class UsersService
     public function store($userData)
     {
         return $this->repository->store($userData);
+    }
+
+    public function updateServiceUser($services_id, $user_id)
+    {
+    
+        ServiceUser::where('user_id', $user_id)->delete();
+        foreach($services_id as $service_id) {
+            ServiceUser::create([
+                'service_id' => $service_id,
+                'user_id' => $user_id,
+                'amount_for_personal' => 0
+            ]);
+        } 
+        return true;
     }
 
     /**

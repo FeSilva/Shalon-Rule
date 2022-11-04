@@ -36,17 +36,8 @@
         <span class="selected-language">English</span>
       </a>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-flag">
-        <a class="dropdown-item" href="{{ url('lang/en') }}" data-language="en">
-          <i class="flag-icon flag-icon-us"></i> English
-        </a>
-        <a class="dropdown-item" href="{{ url('lang/fr') }}" data-language="fr">
-          <i class="flag-icon flag-icon-fr"></i> French
-        </a>
-        <a class="dropdown-item" href="{{ url('lang/de') }}" data-language="de">
-          <i class="flag-icon flag-icon-de"></i> German
-        </a>
         <a class="dropdown-item" href="{{ url('lang/pt') }}" data-language="pt">
-          <i class="flag-icon flag-icon-pt"></i> Portuguese
+          <i class="flag-icon flag-icon-br"></i> Português
         </a>
       </div>
     </li>
@@ -62,7 +53,7 @@
             @endif
           </span>
           <span class="user-status">
-            Admin
+            {{ Auth::user()->team[0]->pivot['role'] }}
           </span>
         </div>
         <span class="avatar">
@@ -90,11 +81,11 @@
 
         @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Manage Team</h6>
+          <h6 class="dropdown-header">Configuração do Time</h6>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"
             href="{{ Auth::user() ? route('teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
-            <i class="me-50" data-feather="settings"></i> Configurações do Grupo
+            <i class="me-50" data-feather="settings"></i> Time
           </a>
          <!-- @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
             <a class="dropdown-item" href="{{ route('teams.create') }}">
@@ -119,7 +110,7 @@
         @if (Auth::check())
           <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="me-50" data-feather="power"></i> Logout
+            <i class="me-50" data-feather="power"></i> Sair
           </a>
           <form method="POST" id="logout-form" action="{{ route('logout') }}">
             @csrf

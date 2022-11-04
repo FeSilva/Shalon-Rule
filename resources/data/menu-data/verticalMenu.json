@@ -1,85 +1,95 @@
 {
-  "menu": [
-    {
-        "navheader": "Principal",
-        "slug": ""
-    },
-    {
-      "url": "/",
-      "name": "Dashboard",
-      "icon": "home",
-      "slug": "home"
-    },
-    {
-        "navheader": "Omie",
-        "slug": ""
-    },
-    {
-        "url": "omie_accounts",
-        "name": "Contas",
-        "icon": "user",
-        "slug": "layout-full"
-    },
-    {
-        "url": "omie_services",
-        "name": "Serviços",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "omie/products",
-        "name": "Produtos",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "omie/contracts",
-        "name": "Contratos",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "omie/os",
-        "name": "Ordem de Serviço",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "navheader": "Salesforce",
-        "slug": ""
-    },
-    {
-        "url": "salesforce/accounts",
-        "name": "Contas",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "salesforce/services",
-        "name": "Serviços",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "salesforce/os",
-        "name": "Gerar OS",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "navheader": "Configuração"
-    },
-    {
-        "url": "config-apis",
-        "name": "Config. Apis",
-        "icon": "circle",
-        "slug": "layout-full"
-    },
-    {
-        "url": "user/list",
-        "name": "Usuários do Grupo",
-        "icon": "users",
-        "slug": "layout-full"
-    }
-  ]
-}
+    "menu": [
+      {
+          "navheader": "Principal",
+          "slug": ""
+      },
+      {
+        "url": "dashboard",
+        "name": "Dashboard",
+        "icon": "home",
+        "slug": "home"
+      },
+      {
+          "url": "calendar",
+          "name": "Agenda",
+          "icon": "calendar",
+          "slug": "calendar"
+      },
+      {
+          "navheader": "Informações",
+          "slug": ""
+      },
+      {
+          "url": "user/list",
+          "name": "Usuários do Grupo",
+          "icon": "users",
+          "slug": "layout-full"
+      },
+      {
+          "url": "services",
+          "name": "Serviços",
+          "icon": "briefcase",
+          "slug": "layout-full"
+      },
+      {
+          "navheader": "Financeiro",
+          "slug": ""
+      },
+      {
+          "name": "Pagamentos",
+          "icon": "money",
+          "slug": "",
+          "badge": "5",
+          "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+          "submenu": [
+              {
+                  "url": "balancy",
+                  "name": "A Receber",
+                  "icon": "home",
+                  "slug": "home"
+              },
+              {
+                  "url": "order-service",
+                  "name": "A Pagar",
+                  "icon": "circle",
+                  "slug": "layout-full"
+              }
+          ]
+      },
+      {
+          "name": "Nota Fiscal",
+          "icon": "money",
+          "slug": "",
+          "badge": "5",
+          "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+          "submenu": [
+              {
+                  "url": "nfe-create",
+                  "name": "Emitir Nfe",
+                  "icon": "home",
+                  "slug": "home"
+              },
+              {
+                  "url": "nfe-search",
+                  "name": "Histórico de Notas",
+                  "icon": "archive",
+                  "slug": "layout-full"
+              },
+              {
+                  "url": "nfe-search",
+                  "name": "Extrato de Conta",
+                  "icon": "archive",
+                  "slug": "layout-full"
+              }
+          ]
+      },
+      {
+          "url": "nfe-create",
+          "name": "Histórico Financeiro",
+          "icon": "home",
+          "slug": "home"
+      }
+    ]
+  }
+  

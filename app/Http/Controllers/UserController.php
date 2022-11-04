@@ -8,13 +8,15 @@ use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Http\Request;
 
+use App\Models\Service as ServiceModel;
+
 class UserController extends Controller
 {
     private $service;
     
     public function __construct(UsersService $service)
     {
-        $this->service = $service;
+        $this->userService = $service;
         $service->getUsersJson();
     }
 
@@ -63,8 +65,15 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->service->getUserById($id);
-        return view("users.account", compact('user'));
+        $services_ids =[];
+        $user = $this->userService->getUserById($id);
+        foreach ($user->service as $ids)
+        {
+            $services_ids[] = $ids->id;
+        }
+
+        $services = ServiceModel::where("team_id", $user->team[0]->id)->whereNotIn('id',$services_ids)->get();
+        return view("users.account", compact('user','services'));
     }
 
     /**
@@ -85,9 +94,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = $this->userService->getUserById($request->input('user_id'));
+        $services = ServiceModel::where("team_id", $user->team[0]->id)->get();
+        $this->userService->updateServiceUser($request->input('services'),$request->input('user_id'));
+
+        return redirect()->back()->with('success', 'O Usuário foi atualizado com sucesso');
     }
 
     /**

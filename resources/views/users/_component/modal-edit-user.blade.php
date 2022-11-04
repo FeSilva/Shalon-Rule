@@ -10,7 +10,32 @@
             <h1 class="mb-1">Editar Informações do Usuário</h1>
             <p></p>
           </div>
-          <form id="editUserForm" class="row gy-1 pt-75" onsubmit="submit()">
+          <form class="row gy-1 pt-75" action="{{ route('users.update') }}" method="POST" role="form" enctype="multipart/form-data">
+            @csrf
+            <input
+              type="hidden"
+              name="user_id"
+              class="form-control"
+              value="{{$user->id}}"
+            />
+            <div class="col-12 col-md-12">
+              <label class="form-label" for="services">Serviços Atribuidos</label>
+              <select
+                id="services"
+                name="services[]"
+                class="form-select select2"
+                aria-label="Default select example"
+                multiple="multiple"
+              >
+                <option>Selecionar Serviços do Usuário</option>
+                @foreach($user->service as $serviceUser)
+                  <option value="{{ $serviceUser->id }}" selected>{{ $serviceUser->name}}</option>
+                @endforeach
+                @foreach($services as $service)
+                  <option value="{{ $service->id }}">{{ $service->name}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="col-12 col-md-6">
               <label class="form-label" for="modalEditUserFirstName">Primeiro Nome</label>
               <input
@@ -71,18 +96,19 @@
                 value="{{$user->tax_id}}"
               />
             </div>
+          
             <div class="col-12 col-md-12">
-              <label class="form-label" for="modalEditUserStatus">Status</label>
+              <label class="form-label" for="status">Status</label>
               <select
-                id="modalEditUserStatus"
-                name="modalEditUserStatus"
+                id="status"
+                name="status"
                 class="form-select"
                 aria-label="Default select example"
               >
                 <option selected>Status</option>
-                <option value="1" selected>Active</option>
-                <option value="2">Inactive</option>
-                <option value="3">Suspended</option>
+                <option value="1" selected>Ativo</option>
+                <option value="2">Inativo</option>
+                <option value="3">Suspenso</option>
               </select>
             </div>
      

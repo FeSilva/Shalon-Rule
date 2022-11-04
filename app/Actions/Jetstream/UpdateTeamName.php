@@ -33,6 +33,8 @@ class UpdateTeamName implements UpdatesTeamNames
 
         $team->forceFill([
             'name' => $input['name'],
+            'zipcode' => $input['zipcode'],
+            'phone' => $input['phone']
         ])->save();
     }
 }

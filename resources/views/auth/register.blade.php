@@ -26,9 +26,9 @@
           <form class="auth-register-form mt-2" method="POST" action="{{ route('register') }}">
             @csrf
             <div class="mb-1">
-              <label for="register-username" class="form-label">Nome</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="register-username"
-                name="name" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus
+              <label for="register-name" class="form-label">Nome</label>
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="register-name"
+                name="name" placeholder="Johndoe" aria-describedby="register-name" tabindex="1" autofocus
                 value="{{ old('name') }}" />
               @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
             <div class="mb-1">
               <label for="register-last_name" class="form-label">Sobrenome</label>
               <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="register-last_name"
-                name="last_name" placeholder="johndoe" aria-describedby="register-last_name" tabindex="1" autofocus
+                name="last_name" placeholder="Martin" aria-describedby="register-last_name" tabindex="1" autofocus
                 value="{{ old('last_name') }}" />
               @error('last_name')
                 <span class="invalid-feedback" role="alert">
@@ -48,6 +48,19 @@
                 </span>
               @enderror
             </div>
+
+            <div class="mb-1">
+              <label for="register-group_name" class="form-label">Grupo</label>
+              <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="register-group_name"
+                name="group_name" placeholder="Regra do Corte" aria-describedby="register-group_name" tabindex="1" autofocus
+                value="{{ old('group_name') }}" />
+              @error('group_name')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+
             <div class="mb-1">
               <label for="register-email" class="form-label">Email</label>
               <input type="text" class="form-control @error('email') is-invalid @enderror" id="register-email"

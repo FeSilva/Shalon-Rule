@@ -7,32 +7,75 @@
       "slug": "home"
     },
     {
-      "name": "Page Layouts",
-      "icon": "layout",
-      "dropdown": "1",
+        "url": "calendar",
+        "name": "Agenda",
+        "icon": "calendar",
+        "slug": "calendar"
+    },
+    {
+      "url": "user/list",
+      "name": "Usuários do Grupo",
+      "icon": "users",
+      "slug": "layout-full"
+    },
+    {
+        "url": "services",
+        "name": "Serviços",
+        "icon": "briefcase",
+        "slug": "layout-full"
+    }, {
+      "name": "Pagamentos",
+      "icon": "money",
       "slug": "",
+      "badge": "5",
+      "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
       "submenu": [
-        {
-          "url": "layouts/full",
-          "name": "Layout Full",
-          "slug": "layout-full"
-        },
-        {
-          "url": "layouts/without-menu",
-          "name": "Without Menu",
-          "slug": "without-menu"
-        },
-        {
-          "url": "layouts/empty",
-          "name": "Layout Empty",
-          "slug": "layout-empty"
-        },
-        {
-          "url": "layouts/blank",
-          "name": "Layout Blank",
-          "slug": "layout-blank"
-        }
+          {
+              "url": "balancy",
+              "name": "A Receber",
+              "icon": "home",
+              "slug": "home"
+          },
+          {
+              "url": "order-service",
+              "name": "A Pagar",
+              "icon": "circle",
+              "slug": "layout-full"
+          }
       ]
+    },
+    {
+        "name": "Nota Fiscal",
+        "icon": "money",
+        "slug": "",
+        "badge": "5",
+        "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+        "submenu": [
+            {
+                "url": "nfe-create",
+                "name": "Emitir Nfe",
+                "icon": "home",
+                "slug": "home"
+            },
+            {
+                "url": "nfe-search",
+                "name": "Histórico de Notas",
+                "icon": "archive",
+                "slug": "layout-full"
+            },
+            {
+                "url": "nfe-search",
+                "name": "Extrato de Conta",
+                "icon": "archive",
+                "slug": "layout-full"
+            }
+        ]
+    },
+    {
+        "url": "nfe-create",
+        "name": "Histórico Financeiro",
+        "icon": "home",
+        "slug": "home"
     }
   ]
 }

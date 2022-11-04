@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Service;
+use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
 class CalendarController extends Controller
 {
     /**
@@ -14,9 +17,10 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('calendar.index');
+        $services = Service::where('team_id', Auth()->user()->team[0]->id)->get();
+        return view('calendar.index', compact('services'));
     }
-
+ 
     /**
      * Show list of company for scheduling
      *
@@ -93,6 +97,15 @@ class CalendarController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getUsers($service_ids)
+    {
+        $users = User::whereHas('team', function ($q) {
+            $q->where('team_id', Auth()->user()->team[0]->id);
+        })->get();
+
+        dd($users);
     }
 
 

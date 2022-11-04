@@ -71,5 +71,20 @@ class User extends Authenticatable
        return $this->belongsToMany(Team::class)->withPivot(['role']);
     }
 
-    
+    /**
+     * Relacionamento com a tabela pivot de serviços
+     */
+    public function service()
+    {
+      return $this->belongsToMany(Service::class);
+    }
+
+    /**
+     * Relacionamento com a session para saber se o user está logado.
+     */
+
+    public function session()
+    {
+        return $this->belongsTo(Session::class, 'id', 'user_id');
+    }
 }

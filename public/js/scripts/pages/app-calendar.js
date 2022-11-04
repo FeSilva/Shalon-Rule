@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateEventBtn = $('.update-event-btn'),
     toggleSidebarBtn = $('.btn-toggle-sidebar'),
     eventTitle = $('#title'),
-    eventLabel = $('#select-label'),
+    professional = $('#professional'),
+    serviceLabel = $('#services'),
     startDate = $('#start-date'),
     endDate = $('#end-date'),
     eventUrl = $('#event-url'),
@@ -68,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.app-calendar .body-content-overlay').addClass('show');
   });
 
-  // Label  select
-  if (eventLabel.length) {
+  // Select2 Serviços
+  if (serviceLabel.length) {
     function renderBullets(option) {
       if (!option.id) {
         return option.text;
@@ -83,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       return $bullet;
     }
-    eventLabel.wrap('<div class="position-relative"></div>').select2({
-      placeholder: 'Select value',
-      dropdownParent: eventLabel.parent(),
+    serviceLabel.wrap('<div class="position-relative"></div>').select2({
+      placeholder: 'Selecione um Serviço',
+      dropdownParent: serviceLabel.parent(),
       templateResult: renderBullets,
       templateSelection: renderBullets,
       minimumResultsForSearch: -1,
@@ -95,6 +96,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Select2 Serviços
+  if (professional.length) {
+    function renderBullets(option) {
+      if (!option.id) {
+        return option.text;
+      }
+      var $bullet =
+        "<span class='bullet bullet-" +
+        $(option.element).data('label') +
+        " bullet-sm me-50'> " +
+        '</span>' +
+        option.text;
+
+      return $bullet;
+    }
+    professional.wrap('<div class="position-relative"></div>').select2({
+      placeholder: 'Por quem você prefere ser atendido ?',
+      dropdownParent: professional.parent(),
+      templateResult: renderBullets,
+      templateSelection: renderBullets,
+      minimumResultsForSearch: -1,
+      escapeMarkup: function (es) {
+        return es;
+      }
+    });
+  }
   // Guests select
   if (eventGuests.length) {
     function renderGuestAvatar(option) {

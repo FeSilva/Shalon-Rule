@@ -119,7 +119,7 @@ $(function () {
           // User Team
           targets: 3,
           render: function (data, type, full, meta) {
-            var $role = full['team'];
+            var $role = full['role'];
             var roleBadgeObj = {
               Graphisoft: feather.icons['user'].toSvg({ class: 'font-medium-3 text-primary me-50' }),
               Author: feather.icons['settings'].toSvg({ class: 'font-medium-3 text-warning me-50' }),
